@@ -1,6 +1,5 @@
-.app {
-  background-image: url("./assets/Scenery_Sunrises_and_492551_1920x1080.jpg");
+body {
+  background-image: url("./assets/25-252076_background-image-for-weather-app.jpg");
   background-size: 100%;
-  background-position: bottom;
   max-height: 100%;
 }

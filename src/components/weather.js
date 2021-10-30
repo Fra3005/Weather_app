@@ -1,7 +1,25 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import TextField from "@mui/material/TextField";
-import { Button, Card, CardContent, Grid, Typography } from "@mui/material";
+import {
+  Button,
+  Card,
+  CardContent,
+  Grid,
+  Stack,
+  Typography,
+} from "@mui/material";
+import { styled } from "@mui/material/styles";
+import Paper from "@mui/material/Paper";
+
+import Icons from "./icon";
+
+const Item = styled(Paper)(({ theme }) => ({
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: "center",
+  color: theme.palette.text.secondary,
+}));
 
 const url = {
   base: "https://api.openweathermap.org/data/2.5/weather?q=",
@@ -35,9 +53,9 @@ export default function Weather() {
 
   return (
     <div className="app">
-      <Grid container>
+      <Grid container spacing={3}>
         <Grid item xs={12}></Grid>
-        <Grid item xs={5}></Grid>
+        <Grid item xs={4.5}></Grid>
         <Grid item xs={6}>
           <TextField
             id="outlined-basic"
@@ -58,22 +76,29 @@ export default function Weather() {
             Trova
           </Button>
         </Grid>
-        <Grid item xs={1}></Grid>
-        <Grid item xs={3}></Grid>
+
+        <Grid item xs={5.2}></Grid>
+        <Grid item xs={4}></Grid>
+
+        <Grid item xs={4.5}></Grid>
         <Grid item xs={6}>
           {api != undefined ? (
-            <Card>
-              <CardContent>
-                {" "}
-                <Typography>
-                  LOCATION: {api.name}, {api.sys.country}
-                </Typography>
-                <Typography>
-                  TEMPERATURA: {Math.round(converter(api.main.temp))}°C
-                </Typography>
-              </CardContent>
-            </Card>
+            <>
+              <>
+                <Stack spacing={5}>
+                  <Typography variant="h4" style={{ color: "white" }}>
+                    Città: {api.name}, {api.sys.country}
+                  </Typography>
+                  <Typography variant="h4" style={{ color: "white" }}>
+                    Temperatura: {Math.round(converter(api.main.temp))}°C
+                  </Typography>
+                </Stack>
+              </>
+            </>
           ) : null}
+        </Grid>
+        <Grid item xs>
+          <Icons time={api.weather[0].main} />
         </Grid>
       </Grid>
     </div>
