@@ -8,18 +8,10 @@ import {
   Grid,
   Stack,
   Typography,
+  Alert
 } from "@mui/material";
-import { styled } from "@mui/material/styles";
-import Paper from "@mui/material/Paper";
 
 import Icons from "./icon";
-
-const Item = styled(Paper)(({ theme }) => ({
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-}));
 
 const url = {
   base: "https://api.openweathermap.org/data/2.5/weather?q=",
@@ -27,8 +19,9 @@ const url = {
 };
 
 export default function Weather() {
-  const [api, setApi] = useState();
+  const [api, setApi] = useState("");
   const [citta, setCitta] = useState("");
+  const [condizioni, setCondizioni] = useState("");
 
   const getWeather = (citta) => {
     try {
@@ -43,7 +36,9 @@ export default function Weather() {
   };
 
   useEffect(() => {
-    console.log(api);
+    if (api != "") {
+      setCondizioni(api.weather[0].main);
+    }
   }, [api]);
 
   const converter = (temp) => {
@@ -82,9 +77,12 @@ export default function Weather() {
 
         <Grid item xs={4.5}></Grid>
         <Grid item xs={6}>
-          {api != undefined ? (
+        <Grid item xs>
+          <Icons time={condizioni} />
+        </Grid>
+          <>
             <>
-              <>
+              {api != "" ? (
                 <Stack spacing={5}>
                   <Typography variant="h4" style={{ color: "white" }}>
                     Città: {api.name}, {api.sys.country}
@@ -93,12 +91,9 @@ export default function Weather() {
                     Temperatura: {Math.round(converter(api.main.temp))}°C
                   </Typography>
                 </Stack>
-              </>
+              ) : <Alert severity="error">The name of city is wrong! Try again!</Alert>}
             </>
-          ) : null}
-        </Grid>
-        <Grid item xs>
-          <Icons time={api.weather[0].main} />
+          </>
         </Grid>
       </Grid>
     </div>
