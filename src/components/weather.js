@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import TextField from "@mui/material/TextField";
 import {
   Button,
@@ -12,12 +11,14 @@ import {
 } from "@mui/material";
 
 import Icons from "./icon";
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 
 const url = {
   base: "https://api.openweathermap.org/data/2.5/weather?q=",
   apiId: "2a0380a6c0cc6fa2a7b4234aa352863a",
 };
-
+//TODO inserire vento, data locale e fare controllo sull'orario per l'icona, check su hendling error
 export default function Weather() {
   const [api, setApi] = useState("");
   const [citta, setCitta] = useState("");
@@ -49,12 +50,12 @@ export default function Weather() {
   return (
     <div className="app">
       <Grid container spacing={3}>
-        <Grid item xs={12}></Grid>
+        
         <Grid item xs={4.5}></Grid>
         <Grid item xs={6}>
           <TextField
             id="outlined-basic"
-            label="Outlined"
+            label="Insert City"
             variant="outlined"
             value={citta}
             onChange={(e) => {
@@ -71,29 +72,26 @@ export default function Weather() {
             Trova
           </Button>
         </Grid>
-
-        <Grid item xs={5.2}></Grid>
-        <Grid item xs={4}></Grid>
-
+        <Grid item xs></Grid>
         <Grid item xs={4.5}></Grid>
         <Grid item xs={6}>
         <Grid item xs>
           <Icons time={condizioni} />
         </Grid>
-          <>
-            <>
               {api != "" ? (
                 <Stack spacing={5}>
                   <Typography variant="h4" style={{ color: "white" }}>
-                    Città: {api.name}, {api.sys.country}
+                    {api.name}, {api.sys.country}
                   </Typography>
                   <Typography variant="h4" style={{ color: "white" }}>
                     Temperatura: {Math.round(converter(api.main.temp))}°C
                   </Typography>
+                  <Typography variant="h6" style={{ color: "white" }}>
+                    <ArrowUpwardIcon/> {Math.round(converter(api.main.temp_max))}°C <ArrowDownwardIcon/> {Math.round(converter(api.main.temp_min))}°C
+                  </Typography>
                 </Stack>
               ) : <Alert severity="error">The name of city is wrong! Try again!</Alert>}
-            </>
-          </>
+           
         </Grid>
       </Grid>
     </div>
