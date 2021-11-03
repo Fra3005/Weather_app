@@ -5,6 +5,7 @@ import day from "../assets/day.svg";
 import cloudy from "../assets/cloudy.svg";
 import rainy from "../assets/rainy-1.svg"
 import mist from '../assets/mist-svgrepo-com.svg'
+import rainy1 from '../assets/rainy-5.svg';
 
 export default function Icons(props) {
   const {time} = props
@@ -30,6 +31,9 @@ console.log("props", props)
       case "Mist":
         setSrc(mist);
         break;
+      case "Rain":
+        setSrc(rainy1)
+      
     }
   }, [time]);
 

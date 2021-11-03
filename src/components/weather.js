@@ -13,7 +13,7 @@ import {
 import Icons from "./icon";
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-
+import AirIcon from '@mui/icons-material/Air';
 const url = {
   base: "https://api.openweathermap.org/data/2.5/weather?q=",
   apiId: "2a0380a6c0cc6fa2a7b4234aa352863a",
@@ -61,6 +61,7 @@ export default function Weather() {
             onChange={(e) => {
               setCitta(e.target.value);
             }}
+            style={{backgroundColor:"white"}}
           />
           <Button
             sx={{ height: "100%", marginLeft: "10px" }}
@@ -88,6 +89,12 @@ export default function Weather() {
                   </Typography>
                   <Typography variant="h6" style={{ color: "white" }}>
                     <ArrowUpwardIcon/> {Math.round(converter(api.main.temp_max))}°C <ArrowDownwardIcon/> {Math.round(converter(api.main.temp_min))}°C
+                  </Typography>
+                  <Typography variant="h6" style={{ color: "white" }}>
+                    <AirIcon/> {Math.round(api.wind.speed * 3.6)} Km/h
+                  </Typography>
+                  <Typography variant="h6" style={{ color: "white" }}>
+                    HUM: {Math.round(api.main.humidity)}%   Pressione:{Math.round(api.main.pressure)}hPa
                   </Typography>
                 </Stack>
               ) : <Alert severity="error">The name of city is wrong! Try again!</Alert>}
