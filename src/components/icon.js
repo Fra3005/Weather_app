@@ -18,22 +18,32 @@ console.log("props", props)
   }, [props])
 
   useEffect(() => {
+    const body = document.body;
+
     switch (time) {
       case "Clouds":
         setSrc(cloudy);
+        body.className = "cloudy";
         break;
       case "Clear":
         setSrc(day);
+        body.className = "clear";
         break;
       case "Drizzle": 
         setSrc(rainy)
+        body.className = "drizzle";
         break;
       case "Mist":
         setSrc(mist);
+        body.className = "mist";
         break;
       case "Rain":
         setSrc(rainy1)
-      
+        body.className = "rain";
+        break;
+      default:
+        body.className = "clear";
+        break;
     }
   }, [time]);
 

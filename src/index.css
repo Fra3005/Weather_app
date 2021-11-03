@@ -1,5 +1,12 @@
 body {
-  background-image: url("./assets/25-252076_background-image-for-weather-app.jpg");
   background-size: 100%;
   max-height: 100%;
+}
+
+.cloudy {
+  background-image: url("./assets/Scenery_Sunrises_and_492551_1920x1080.jpg");
+}
+
+.clear {
+  background-image: url("./assets/25-252076_background-image-for-weather-app.jpg");
 }
