@@ -15,6 +15,7 @@ import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import AirIcon from "@mui/icons-material/Air";
 import axios from "axios";
+import Error404 from '../404';
 
 const url = {
   base: process.env.REACT_APP_BASE_URL,
@@ -103,9 +104,10 @@ export default function Weather() {
               </Typography>
             </Stack>
           ) : noCity ? (
-            <Alert severity="error">
-              The name of city is wrong! Try again!
-            </Alert>
+            // <Alert severity="error">
+            //   The name of city is wrong! Try again!
+            // </Alert>
+            <Error404/>
           ) : null}
         </Grid>
       </Grid>

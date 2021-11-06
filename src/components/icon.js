@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import WbSunnyIcon from "@mui/icons-material/WbSunny";
-import FilterDramaIcon from "@mui/icons-material/FilterDrama";
 import day from "../assets/day.svg";
 import cloudy from "../assets/cloudy.svg";
 import rainy from "../assets/rainy-1.svg"
@@ -42,7 +40,8 @@ console.log("props", props)
         body.className = "rain";
         break;
       default:
-        body.className = "clear";
+        body.className = body;
+        setSrc(null)
         break;
     }
   }, [time]);
@@ -50,7 +49,7 @@ console.log("props", props)
 
   return (
     <div>
-      <img src={src} style={{width:"180px"}}></img>
+      <img src={src} style={{width:"200px"}}></img>
     </div>
   );
 }

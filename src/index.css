@@ -1,12 +1,22 @@
 body {
   background-size: 100%;
   max-height: 100%;
+  background-image: url("./assets/25-252076_background-image-for-weather-app.jpg");
 }
 
 .cloudy {
-  background-image: url("./assets/Scenery_Sunrises_and_492551_1920x1080.jpg");
+  background-image: url("./assets/background_oblaka_nebo_pasmurno_1242521_pic_image_wallpaper_big_1920x1080.jpg");
+  font-family: fantasy;
 }
 
 .clear {
-  background-image: url("./assets/25-252076_background-image-for-weather-app.jpg");
+  background-image: url("./assets/Scenery_Sunrises_and_492551_1920x1080.jpg"); 
+}
+
+.rain {
+  background-image: url("./assets/44-443507_rain-hd-wallpapers-1080p-windows-data-src-1080p.jpg")
+}
+
+.drizzle {
+  background-image: url("./assets/44-443507_rain-hd-wallpapers-1080p-windows-data-src-1080p.jpg")
 }
